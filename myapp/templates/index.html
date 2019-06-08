@@ -1,0 +1,10 @@
+{% extends "set1.html" %}
+{% block body %}
+    <div id="index">
+        <div style="font-size: 30px;position:absolute;left:750px;top:250px;width:520px">
+            Based on simple REST principles and Convolutional Neural Network, the Helld Web API endpoints return JSON metadata.
+        </div>
+        <button class="btn btn-primary btn-lg" id="btn" style="position:absolute;left:750px;top:450px;">Try now</button>
+    </div>
+    <script src="{{url_for('static',filename='js/index.js')}}"></script>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "set1.html" %}
+{% block body %}
+    <h1 style="position:absolute;left: 12%">Product:</h1>
+    <div class="container-fluid" style="position:absolute;left:120px;top: 170px;width:90%">
+        <div class="row">
+
+            <div class="col-lg-3 modal-content pro">
+                <h4>Crowd Counting</h4>
+                <p>Crowd analysis has important geo-political and civic applications. Civic agencies and planners rely on crowd estimates to regulate access points and plan disaster contingency for such events.</p>
+                <button class="btn btn-primary doc" >Learn it</button>
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3 modal-content pro">
+                <h4>Numeral Recognition</h4>
+                <p>An API provides numeral recognition.Crowd analysis has important geo-political and civic applications. </p>
+                <button class="btn btn-primary doc" >Learn it</button>
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3 modal-content pro">.col-xs-6 .col-sm-3</div>
+
+        </div>
+    </div>
+    <script src="{{url_for('static',filename='js/products.js')}}"></script>
+{% endblock %}

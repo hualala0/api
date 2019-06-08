@@ -1,0 +1,15 @@
+{% extends "set2.html" %}
+{% block body %}
+    <div>
+    <ul>
+        {% for product in products %}
+            <li class="product">{{ product['pname'] }}</li>
+        {% endfor %}
+    </ul>
+    </div>
+    <div>
+    you choose:<div id="text"></div>
+    </div>
+    <div><button id="btn1">submit</button></div>
+    <script src="{{url_for('static',filename='js/addapi.js')}}"></script>
+{% endblock %}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>signin</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/c.css')}}">
+    <script src="{{url_for('static',filename='js/jquery-3.3.1.js')}}"></script>
+    <script src="{{url_for('static',filename='js/jquery.form.js')}}"></script>
+    <script src="{{url_for('static',filename='js/signin.js')}}"></script>
+</head>
+<body style="height: 100%;width: 90%">
+    <div style="float:left;width:49%;border:1px ">
+        <img width="100%" height="100%" alt="sign" src="{{url_for('static',filename='img/sign.jpg')}}">
+    </div>
+    <div style="float:right;width:49%;border:1px">
+        <form style="position:absolute;left:855px;top:100px;" method="post" action="/signin">
+            <div><label class="formt" for="InputUsername">Sign in</label></div>
+            <div class="form-group">
+                <label class="forml" for="InputUsername">Username</label>
+                <input class="formt form-control" type="text" name="username" placeholder="Username"/></div>
+            <div class="form-group">
+                <label class="forml" for="InputPassword">Password</label>
+                <input class="formt form-control" type="password" name="pwd" placeholder="Password"/></div>
+            <br>
+            <button class="formb btn btn-default" type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+<script src="{{url_for('static',filename='js/jquery-3.3.1.js')}}"></script>
+<script src="{{url_for('static',filename='js/jquery.form.js')}}"></script>
+<script src="{{url_for('static',filename='js/signin.js')}}"></script>
+</html>

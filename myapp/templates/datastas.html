@@ -1,0 +1,20 @@
+{% extends "set2.html" %}
+{% block body %}
+    <table class="table table-striped">
+        <tr>
+            <th>user</th>
+            <th>api</th>
+            <th>operate</th>
+        </tr>
+        {% for dt in data %}
+            <tr>
+                <th>{{ user }}</th>
+                <th>{{ dt[0] }}</th>
+                <th><button class="btn">view</button></th>
+            </tr>
+        {% endfor %}
+    </table>
+    <div id="mychart" style="width: 873px;height:500px;"></div>
+    <script src="{{url_for('static',filename='js/echarts.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/datastas.js')}}"></script>
+{% endblock %}

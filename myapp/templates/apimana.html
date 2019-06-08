@@ -1,0 +1,24 @@
+{% extends "set2.html" %}
+{% block body %}
+    <div>
+        <div>
+            <label>add:</label>
+            <img alt="add api" width="80px" height="80px" src="{{url_for('static',filename='img/timg.jfif')}}" />
+        </div>
+        <table class="table table-striped">
+            <tr>
+                <th>user</th>
+                <th>api</th>
+                <th>operate</th>
+            </tr>
+            {% for dt in data %}
+                <tr>
+                    <th>{{ user }}</th>
+                    <th>{{ dt[0] }}</th>
+                    <th><button class="btn">delete</button></th>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <script src="{{url_for('static',filename='js/apimana.js')}}"></script>
+{% endblock %}

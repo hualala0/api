@@ -1,0 +1,52 @@
+{% extends "set1.html" %}
+{% block body %}
+    <div class="container-fluid" style="width: 90%">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <h3>Request URL:</h3>
+                <code>/apis/&lt;apiname&gt;</code>
+                <h3>Realized by ajax:</h3>
+                <pre>
+&lt;form&gt;
+    &lt;p&gt;user:&lt;input type="text" id="user" name="user"&gt;&lt;/p&gt;
+    &lt;p&gt;api: &lt;input type="text" id="api" name="api"&gt;&lt;/p&gt;
+    &lt;input type="file" name="file" id="file" accept=".png, .jpg, .jpeg"&gt
+    &lt;input type="button" id="button" value="submit"&gt;
+    &lt;/form&gt;
+&lt;script&gt;
+    $("#button").on("click", function () {
+        var formData = new FormData();
+        var user = $("#text").val();
+        formData.append("file", $("#file")[0].files[0]);
+        formData.append("user", user);
+        $.ajax({
+            url: "/apis/numeralrecognition",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    });
+&lt;/script&gt;
+                </pre>
+                <div>
+                    <p>
+                        <p>user:<input type="text" id="user" name="user"></p>
+                        <p>api:<input type="text" id="api" name="api"></p>
+                        <p><input type="file" name="file" id="file" accept=".png, .jpg, .jpeg"></p>
+                        <input type="button" id="button" value="submit">
+                    </form>
+                </div>
+                <p>You can see the result from the web console.</p>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+    </div>
+
+
+    <script src="{{url_for('static',filename='js/docs.js')}}"></script>
+{% endblock %}
