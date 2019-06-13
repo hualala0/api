@@ -6,7 +6,9 @@ import datetime
 from sqlalchemy import distinct
 from PIL import Image
 import numpy as np
+import cv2
 from myapp.loadimage.imnumeralrecognition import loadImage,rtnY
+from myapp.loadimage.cc import cc
 
 class DateEnconding(json.JSONEncoder):
     def default(self, o):
@@ -150,7 +152,31 @@ def api1():
             w = np.load("myapp/networks/w.npy")
             w_h = np.load("myapp/networks/w_h.npy")
             imdata = loadImage(im)
-            y = rtnY(imdata,w,w_h)
+            y = rtnY(imdata, w, w_h)
             return jsonify(str(y))
         else:
             abort(400)
+@app.route('/apis/crowdcounting',methods=['POST'])
+def api2():
+    try:
+        p = Product.query.filter_by(pname='crowdcounting').first()
+        u = User.query.filter_by(uname=request.form['user']).first()
+        up = Up.query.filter_by(uid=u.uid, pid=p.pid, date=datetime.date.today()).first()
+        img = request.files.get('file')
+        img=Image.open(img)
+        img.save('test.jpg')
+    except BaseException:
+        abort(400)
+    else:
+        if Up.query.filter_by(uid=u.uid,pid=p.pid).first() is not None:
+            if up is None:
+                db.session.add(Up(u.uid, p.pid,datetime.date.today()))
+                db.session.commit()
+            else:
+                up.count += 1
+            db.session.commit()
+            im = cv2.imread('test.jpg', 0)
+            y = cc(im)
+            return jsonify(str(y))
+        else:
+            abort(300)
